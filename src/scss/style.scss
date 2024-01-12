@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary-color: #0791b2;
+    --svg-white: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7486%) hue-rotate(159deg) brightness(105%) contrast(104%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Playfair Display';
+}
+
+html,body
+{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; 
+}
+
+@mixin flexbox-vertical() {
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    @include flexbox-vertical();
+}
+
+header {
+    position: relative;
+
+    .background-rect {
+        position: absolute;
+        background-color: var(--primary-color);
+        width: 100%;
+        height: 100%;
+        z-index: -100;
+    }
+    
+    .background-cut {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-top: 250px solid transparent;
+        border-right: 100vw solid white;
+        z-index: -100;
+    }
+    
+    .about-image {
+        background-image: url('../img/pexels-anna-shvets-3727513.jpg');
+        background-size: cover;
+        width: 300px;
+        min-height: 400px;
+        font-size: 38px;
+        color: whitesmoke;
+        align-items: flex-end;
+        justify-content: center;
+        padding: .4rem;
+        float: left;
+        display: flex;
+        margin-top: 30px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    .about-block {
+        min-width: 220px;
+        max-width: 1900px;
+        box-shadow: 5px 10px 10px rgba(0, 0, 0, .5);
+        padding: 40px;
+        padding-left: 60px;
+        margin-left: 40px;
+        margin-top: 90px;
+        margin-right: 60px;
+        background-color: white;
+    
+        h1 {
+            font-weight: 400;
+        }
+    
+        .about-text {
+            padding: 30px 25px;
+        }
+    
+        .about-icons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1.2rem;
+            padding-top: 20px;
+
+            .about-icon {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+}
+
+main {
+    padding: 2rem 3rem;
+
+    h2 {
+        margin: 1rem 0;
+        font-weight: 400;
+        font-size: 30px;
+    }
+
+    .projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+
+        .project {
+            @include flexbox-vertical();
+            max-width: 300px;
+
+            .project-img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+        
+            .project-desc {
+                height: 150px;
+                padding: .6rem 1.2rem;
+                position: relative;
+                background-color: white;
+                box-shadow: 2px 7px 15px rgb(0, 0, 0, 0.3);
+
+                .desc-title {
+                    font-size: 20px;
+                    margin-bottom: 1rem;
+                }
+
+                .desc-icons {
+                    display: flex;
+                    gap: 20px;
+                    position: absolute;
+                    top: 12px;
+                    right: 20px;
+                }
+
+                .desc-icon {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+        }
+    }
+}
+
+
+footer {
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 20px;
+    gap: 20px;
+
+    .contact-block {
+        @include flexbox-vertical();
+        gap: 20px;
+    }
+
+    h2 {
+        font-weight: 400;
+        font-size: 40px;
+    }
+
+    ul {
+        list-style: none;
+    }
+    
+    @mixin footer-list-icon($src) {
+        content: url($src);
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        margin-right: 8px;
+        vertical-align: -20%;
+        filter: invert(100%) sepia(0%) saturate(7486%) hue-rotate(159deg) brightness(105%) contrast(104%);
+    }
+
+
+    li:first-child::before {
+        @include footer-list-icon('../icons/phone-outline.svg');
+    }
+    
+    li:nth-child(2)::before {
+        @include footer-list-icon('../icons/email-outline.svg');
+    }
+
+    li:not(:last-child) {
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-icons {
+        display: flex;
+        gap: 1.7rem;
+    
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            filter: var(--svg-white);
+        }
+    }
+
+    .img-cover {
+        min-width: 370px;
+    }
+
+    img {
+        object-fit: cover;
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .about-icons {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .about-image {
+        margin-left: 2px !important;
+    }
+
+    .about-block {
+        clear: both;
+        box-shadow: none !important;
+        padding: 10px !important;
+    }
+
+    .about-text {
+        padding: 10px 0 !important;
+
+        h1 {
+            text-align: center;
+        }
+    }
+
+    .background-rect {
+        height: 20% !important;
+    }
+
+    .about-icons {
+        justify-content: center !important;
+        display: flex !important;
+    }
+
+    main {
+        padding: 10px;
+        margin-bottom: 60px;
+    }
+
+    .projects {
+        row-gap: 60px !important;
+    }
+
+    footer li::before {
+        content: none !important;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    footer {
+        padding: 0 !important;
+        flex-direction: column;
+
+        .img-cover {
+            width: 100%;
+            overflow: hidden;
+            
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    .contact-block {
+        padding: 20px 30px;
+        padding-bottom: 0;
+    }
+
+    .contact-icons {
+        justify-content: center;
+    }
+}
+

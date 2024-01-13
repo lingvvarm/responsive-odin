@@ -306,3 +306,13 @@ footer {
     }
 }
 
+@media screen and (min-width: 1500px) {
+    .background-cut {
+        display: none;
+    }
+
+    header {
+        padding-bottom: 30px;
+    }
+    
+}

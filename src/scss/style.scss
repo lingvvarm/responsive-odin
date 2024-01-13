@@ -36,7 +36,7 @@ header {
         position: absolute;
         background-color: var(--primary-color);
         width: 100%;
-        height: 100%;
+        height: 99%;
         z-index: -100;
     }
     
@@ -101,6 +101,7 @@ header {
 
 main {
     padding: 2rem 3rem;
+    margin-bottom: 80px;
 
     h2 {
         margin: 1rem 0;
@@ -112,6 +113,7 @@ main {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 20px;
+        row-gap: 60px;
 
         .project {
             @include flexbox-vertical();
@@ -154,7 +156,7 @@ main {
 
 
 footer {
-    padding: 3rem 2rem;
+    padding: 3rem 4rem;
     display: flex;
     justify-content: space-between;
     background-color: var(--primary-color);
@@ -259,6 +261,10 @@ footer {
     main {
         padding: 10px;
         margin-bottom: 60px;
+
+        h2 {
+            text-align: center;
+        }
     }
 
     .projects {
@@ -267,6 +273,10 @@ footer {
 
     footer li::before {
         content: none !important;
+    }
+
+    footer .contact-block h2 {
+        text-align: center;
     }
 
 }
